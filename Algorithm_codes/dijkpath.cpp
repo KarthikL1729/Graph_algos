@@ -49,7 +49,7 @@ int *dijkstra(vector<vector<pi>> gr, int n, int root)
         cout<<i<<" "<<dist[i]<<endl;
         cout<<"Path:";
         if(dist[i] == INT_MAX)
-            cout<<"Null\n";
+            cout<<"Null\n";  //Gives path size as INT_MAX
         else
         {
             vector<int> path;
