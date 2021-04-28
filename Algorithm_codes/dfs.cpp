@@ -11,8 +11,6 @@ void dfs(int u, vector<vector<int>> &gr, vb &vst)
 		{
 			dfs(it, gr, vst);
 		}
-		else
-			return;
 	}
 }
 int main()
