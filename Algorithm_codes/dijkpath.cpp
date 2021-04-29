@@ -12,6 +12,7 @@ int *dijkstra(vector<vector<pi>> gr, int n, int root)
     int prev[n];
     for(int i = 0; i < n; i++)
     {
+        //Initialsing stuff here
         dist[i] = INT_MAX;
         vs[i] = 0;
         prev[i] = -1;
@@ -22,7 +23,7 @@ int *dijkstra(vector<vector<pi>> gr, int n, int root)
     pq.push(make_pair(0, root));
     while(pq.size())
     {
-        int ind = pq.top().second;
+        int ind = pq.top().second;  //Choosinhg the least distance index so far and popping it
         vs[ind] = 1;
         if(dist[ind] < pq.top().first)
         {
@@ -32,12 +33,12 @@ int *dijkstra(vector<vector<pi>> gr, int n, int root)
         pq.pop();
         for(int i = 0; i < gr[ind].size(); i++)
         {
-            if(!vs[gr[ind][i].second])
+            if(!vs[gr[ind][i].second])  //Checking neighbours of chosen best element and updating (relaxing) their distances
             {
                 int nd = dist[ind] + gr[ind][i].first;
                 if(nd < dist[gr[ind][i].second])
                 {
-                    prev[gr[ind][i].second] = ind;
+                    prev[gr[ind][i].second] = ind;  //Updating prev array to know the followed path
                     dist[gr[ind][i].second] = nd;
                     pq.push(make_pair(nd, gr[ind][i].second));
                 }
@@ -51,7 +52,8 @@ int *dijkstra(vector<vector<pi>> gr, int n, int root)
         if(dist[i] == INT_MAX)
             cout<<"Null\n";  //Gives path size as INT_MAX
         else
-        {
+        {   
+            //Reconstructing path here
             vector<int> path;
             for(int cur = i; cur != -1; cur = prev[cur])
                 path.push_back(cur);
